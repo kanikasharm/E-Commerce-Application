@@ -12,4 +12,12 @@
     <color name="start">#f0a150</color>
     <color name="end">#f48020</color>
     <color name = "grey">#808080</color>
+    <color name="blue">#3E8EDE</color>
+    <color name="dark_blue">#003153</color>
+    <color name="light_blue">#1E2867</color>
+    <color name="dark_orange">#DD571C</color>
+    <color name="gray">#808080</color>
+    <color name="light_gray">#C6C6C6</color>
+    <color name="pastel_blue">#B0CFFF</color>
+    <color name="pink">#E5B0EA</color>
 </resources>
