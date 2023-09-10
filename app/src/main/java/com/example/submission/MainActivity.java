@@ -68,7 +68,7 @@ FirebaseAuth mAuth;
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             progressDialog.dismiss();
                             if (task.isSuccessful()) {
-                                Intent intent = new Intent(MainActivity.this, Thankyou.class);
+                                Intent intent = new Intent(MainActivity.this, HomePage.class);
                                 startActivity(intent);
                             } else {
                                 Toast.makeText(MainActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();

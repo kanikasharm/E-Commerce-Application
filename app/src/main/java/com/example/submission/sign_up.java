@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -30,6 +31,7 @@ public class sign_up extends AppCompatActivity {
     private FirebaseAuth mAuth;
     FirebaseDatabase firebaseDatabase;
     ProgressDialog progressDialog;
+    SharedPreferences sharedPreferences;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -54,6 +56,19 @@ public class sign_up extends AppCompatActivity {
                 String getname = userName.getText().toString().trim();
                 String getmail = email.getText().toString().trim();
                 String getPass = password.getText().toString().trim();
+
+                sharedPreferences = getSharedPreferences("OnBoardActivity", MODE_PRIVATE);
+                boolean isFirstTime = sharedPreferences.getBoolean("FirstTime", true);
+
+                if(isFirstTime) {
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean("FirstTime", false);
+                    editor.commit();
+
+                    Intent intent = new Intent(sign_up.this, OnBoardActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
                 if (TextUtils.isEmpty(getmail) || TextUtils.isEmpty(getPass) || TextUtils.isEmpty(getname)) {
                     Toast.makeText(sign_up.this, "Enter your details", Toast.LENGTH_SHORT).show();
                 }
