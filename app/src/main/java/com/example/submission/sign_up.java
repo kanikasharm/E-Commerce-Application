@@ -65,7 +65,7 @@ public class sign_up extends AppCompatActivity {
                     editor.putBoolean("FirstTime", false);
                     editor.commit();
 
-                    Intent intent = new Intent(sign_up.this, OnBoardActivity.class);
+                    Intent intent = new Intent(sign_up.this, HomePage.class);
                     startActivity(intent);
                     finish();
                 }

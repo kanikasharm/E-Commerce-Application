@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -13,6 +15,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.submission.adapters.SliderAdapter;
 
@@ -23,6 +26,7 @@ public class OnBoardActivity extends AppCompatActivity {
  TextView[] dots;
  Button btn;
  Animation animation;
+ SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +34,7 @@ public class OnBoardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_on_board);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().hide();
+
         viewPager = findViewById(R.id.slider);
         dotsLayout = findViewById(R.id.dots);
         btn = findViewById(R.id.get_started_button);
@@ -38,6 +42,7 @@ public class OnBoardActivity extends AppCompatActivity {
         sliderAdapter = new SliderAdapter(this);
         viewPager.setAdapter(sliderAdapter);
         viewPager.addOnPageChangeListener(pageChangeListener);
+
 
         addDots(0);
 
@@ -89,4 +94,12 @@ public class OnBoardActivity extends AppCompatActivity {
 
         }
     };
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // Save state to a Bundle
+        Bundle state = new Bundle();
+        state.putString("key", "value");
+        onSaveInstanceState(state);
+    }
 }

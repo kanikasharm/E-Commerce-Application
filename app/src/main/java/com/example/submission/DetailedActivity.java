@@ -75,6 +75,12 @@ public class DetailedActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         //new producs
         if (newProductsList != null) {
@@ -142,7 +148,18 @@ public class DetailedActivity extends AppCompatActivity {
         buy_now.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DetailedActivity.this, AddressActivity.class));
+               Intent intent = new Intent(DetailedActivity.this, AddressActivity.class);
+
+               if(newProductsList != null) {
+                   intent.putExtra("item", newProductsList);
+               }
+                if(popularProductsModel != null) {
+                    intent.putExtra("item", popularProductsModel);
+                }
+                if(showAllModel != null) {
+                    intent.putExtra("item", showAllModel);
+                }
+                startActivity(intent);
             }
         });
 

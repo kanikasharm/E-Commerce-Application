@@ -23,6 +23,12 @@ FirebaseAuth auth;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+        if (savedInstanceState != null) {
+            // Restore state from the saved Bundle
+            String value = savedInstanceState.getString("key");
+            // Restore other state data as needed
+        }
+
         auth = FirebaseAuth.getInstance();
 
         toolbar = findViewById(R.id.toolbar);
