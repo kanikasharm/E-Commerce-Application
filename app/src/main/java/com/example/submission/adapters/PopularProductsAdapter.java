@@ -1,6 +1,8 @@
 package com.example.submission.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.submission.DetailedActivity;
 import com.example.submission.R;
 import com.example.submission.models.PopularProductsModel;
 
@@ -35,11 +38,19 @@ public class PopularProductsAdapter extends RecyclerView.Adapter<PopularProducts
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Glide.with(context).load(list2.get(position).getImg_url()).into(holder.pop_img);
         holder.pop_name.setText(list2.get(position).getName());
         holder.pop_price.setText(String.valueOf(list2.get(position).getPrice()));
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, DetailedActivity.class);
+                intent.putExtra("detailed", list2.get(position));
+                context.startActivity(intent);
+            }
+        });
     }
 
 

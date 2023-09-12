@@ -4,6 +4,7 @@ import static android.content.ContentValues.TAG;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,12 +19,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.submission.R;
+import com.example.submission.ShowAllActivity;
 import com.example.submission.adapters.CategoryAdapter;
 import com.example.submission.adapters.NewPoductsAdapter;
 import com.example.submission.adapters.PopularProductsAdapter;
@@ -59,6 +62,9 @@ public class HomeFragment extends Fragment {
     List<PopularProductsModel> popularProductsModelList;
     PopularProductsAdapter popularProductsAdapter;
 
+    //show all
+    TextView catShowAll, newProductsShowAll, popProdShowAll;
+
 
     FirebaseFirestore db;
 
@@ -77,6 +83,34 @@ public class HomeFragment extends Fragment {
         catRecyclerView = root.findViewById(R.id.rec_category);
         prodRecyclerView = root.findViewById(R.id.new_product_rec);
         popularProdRecyclerView = root.findViewById(R.id.popular_rec);
+        catShowAll = root.findViewById(R.id.category_see_all);
+        newProductsShowAll = root.findViewById(R.id.newProducts_see_all);
+        popProdShowAll = root.findViewById(R.id.popular_see_all);
+
+        catShowAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ShowAllActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        newProductsShowAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ShowAllActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        popProdShowAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ShowAllActivity.class);
+                startActivity(intent);
+            }
+        });
+
         pd = new ProgressDialog(getActivity());
         linearLayout = root.findViewById(R.id.home_layout);
         linearLayout.setVisibility(View.GONE);
@@ -93,6 +127,7 @@ public class HomeFragment extends Fragment {
         pd.setCanceledOnTouchOutside(false);
         pd.show();
 
+        //category list
         catRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
         categoryModelList = new ArrayList<CategoryModel>();
         categoryAdapter = new CategoryAdapter(getContext(), categoryModelList);
@@ -120,6 +155,8 @@ public class HomeFragment extends Fragment {
         catch (Exception e) {
             e.printStackTrace();
         }
+
+        //new products
         newProductsLists = new ArrayList<>();
         newPoductsAdapter = new NewPoductsAdapter(getContext(), newProductsLists);
         prodRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
@@ -145,6 +182,7 @@ public class HomeFragment extends Fragment {
                     }
                 });
 
+        //popular products
         popularProdRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         popularProductsModelList = new ArrayList<>();
         popularProductsAdapter = new PopularProductsAdapter(getContext(), popularProductsModelList);

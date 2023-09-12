@@ -2,11 +2,11 @@ package com.example.submission.models;
 
 import java.io.Serializable;
 
-public class newProductsList implements Serializable {
+public class ShowAllModel implements Serializable {
     String img_url, description, name, rating;
     int price;
 
-    public newProductsList() {
+    public ShowAllModel() {
     }
 
     public String getImg_url() {
@@ -49,11 +49,12 @@ public class newProductsList implements Serializable {
         this.price = price;
     }
 
-    public newProductsList(String img_url, String description, String name, String rating, int price) {
+    public ShowAllModel(String img_url, String description, String name, String rating, int price) {
         this.img_url = img_url;
         this.description = description;
         this.name = name;
         this.rating = rating;
         this.price = price;
     }
+
 }

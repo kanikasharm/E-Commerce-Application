@@ -43,7 +43,7 @@ FirebaseAuth mAuth;
         progressDialog.setTitle("Logging in");
         progressDialog.setMessage("Logging in to your account");
         mAuth = FirebaseAuth.getInstance();
-        getSupportActionBar().hide();
+//        getSupportActionBar().hide();
 
 
         signIn.setOnClickListener(new View.OnClickListener() {

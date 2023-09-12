@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="address_add" type="id" />
+    <item name="select_address" type="id" />
+</resources>

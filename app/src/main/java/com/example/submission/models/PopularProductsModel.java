@@ -5,8 +5,27 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class PopularProductsModel {
-    String img_url, name, type;
+import java.io.Serializable;
+
+public class PopularProductsModel implements Serializable {
+    String img_url, name, type, description, rating;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getRating() {
+        return rating;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
+
     int price;
 
     public String getImg_url() {
@@ -44,11 +63,13 @@ public class PopularProductsModel {
     public PopularProductsModel() {
     }
 
-    public PopularProductsModel(String img_url, String name, String type, int price) {
+    public PopularProductsModel(String img_url, String name, String type, int price, String desc, String rating) {
         this.img_url = img_url;
         this.name = name;
         this.type = type;
         this.price = price;
+        this.description = desc;
+        this.rating = rating;
 
 }
 }

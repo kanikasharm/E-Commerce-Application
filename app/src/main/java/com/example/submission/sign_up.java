@@ -48,7 +48,7 @@ public class sign_up extends AppCompatActivity {
         progressDialog = new ProgressDialog(sign_up.this);
         progressDialog.setTitle("Creating account");
         progressDialog.setMessage("We are creating your account");
-        getSupportActionBar().hide();
+//        getSupportActionBar().hide();
 
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
